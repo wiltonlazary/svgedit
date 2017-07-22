@@ -557,6 +557,8 @@ TODOS
 							s.src = curConfig.extPath + extname;
 							document.querySelector('head').appendChild(s);
 						}
+					}).fail(function(jqxhr, settings, exception){
+						console.log(exception);
 					});
 				});
 
@@ -798,7 +800,7 @@ TODOS
 			(function() {
 				// let the opener know SVG Edit is ready (now that config is set up)
 				var svgEditorReadyEvent,
-					w = window.opener;
+					w = window.opener || window.parent;
 				if (w) {
 					try {
 						svgEditorReadyEvent = w.document.createEvent('Event');
